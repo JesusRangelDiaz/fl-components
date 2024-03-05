@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static const Color primary = Colors.greenAccent;
+  static const Color primary = Colors.amber;
 
   static final ThemeData lightTheme = ThemeData(
       primaryColor: primary,
@@ -13,12 +13,18 @@ class AppTheme {
       //Primary color
       primaryColor: primary,
 
-      //App bar theme
+      //AppBar theme
       appBarTheme: const AppBarTheme(
         color: primary, 
         elevation: 0
       ),
-      scaffoldBackgroundColor:Color.fromARGB(255, 0, 0, 0) );
 
+
+      scaffoldBackgroundColor:const Color.fromARGB(255, 0, 0, 0),
+
+      //TextButton theme
+      textButtonTheme: TextButtonThemeData(style: TextButton.styleFrom(foregroundColor: Colors.amber)
+      )
       
+    );  
 }
