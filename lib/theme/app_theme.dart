@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  static const Color primary = Colors.greenAccent;
+  static const Color primary = Colors.indigo;
 
   static final ThemeData lightTheme = ThemeData(
       primaryColor: primary,
 
       //App bar theme
       appBarTheme: const AppBarTheme(color: primary, elevation: 0),
+
+      //FloatingActionButton
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: primary),
+
+      //ElevatedButton
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(backgroundColor: AppTheme.primary, shape: const StadiumBorder()),
+      ),
 
       //TextButton theme
       textButtonTheme: TextButtonThemeData(
