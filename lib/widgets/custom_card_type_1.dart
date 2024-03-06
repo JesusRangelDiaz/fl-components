@@ -15,7 +15,8 @@ class CustomCardType1 extends StatelessWidget {
           const ListTile(
             leading: Icon(Icons.photo_album_outlined, color: AppTheme.primary),
             title: Text('xdxdd'),
-            subtitle: Text('Tempor eiusmod amet irure eu commodo nulla qui adipisicing non ea elit reprehenderit exercitation ea.'),
+            subtitle: Text(
+                'Tempor eiusmod amet irure eu commodo nulla qui adipisicing non ea elit reprehenderit exercitation ea.'),
           ),
           Padding(
             padding: const EdgeInsets.only(right: 5),
@@ -23,15 +24,10 @@ class CustomCardType1 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton(
-                  onPressed: (){}, 
-                  style: TextButton.styleFrom(foregroundColor:AppTheme.primary),
+                  onPressed: () {},
                   child: const Text('Cancel'),
                 ),
-                TextButton(
-                  onPressed: (){}, 
-                  style: TextButton.styleFrom(foregroundColor:AppTheme.primary),
-                  child: const Text('Ok')
-                )
+                TextButton(onPressed: () {}, child: const Text('Ok'))
               ],
             ),
           )

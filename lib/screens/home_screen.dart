@@ -1,12 +1,11 @@
-import 'package:fl_components/router/app_routes.dart';
-import 'package:fl_components/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+
+import '../router/app_routes.dart';
+import '../theme/app_theme.dart';
 
 class HomeScreen extends StatelessWidget {
   
   const HomeScreen({super.key});
-
-  
   
   @override
   Widget build(BuildContext context) {
