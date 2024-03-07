@@ -1,46 +1,60 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/widgets.dart';
+
 class InputScreen extends StatelessWidget {
-   
   const InputScreen({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
+
+    final GlobalKey<FormState> myFormKey = GlobalKey();
+
+    final Map<String,String> formValues = {
+      'first_name': 'jesus',
+      'last_name' : 'rangel',
+      'email'     : 'jesus.rangel@cceo.com.mx',
+      'password'  : 'sjdaklsjdhalskjhdaklsd',
+      'role'      : 'admin'
+    };
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Inputs - Forms'),
       ),
-      body: SingleChildScrollView(
+      body:  SingleChildScrollView(
         child: Padding(
-          padding:  const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-          child:Column(
-            children: [
-              TextFormField(
-                initialValue: '',
-                textCapitalization: TextCapitalization.words,
-                onChanged: (value) =>{
-                  print(value)
-                },
-                validator: (value) {
-                  if (value == null) return 'Ete campo es requerido';
-                  return value.length<3 ? 'Minimo de 3 letras' : null;
-                },
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                decoration:const  InputDecoration(
-                  hintText: 'Nombre del usuario',
-                  labelText: 'Nombre',
-                  helperText: 'Sólo letras',
-                  counterText: '3 caracteres',
-                  suffixIcon: Icon(Icons.group),
-                  icon: Icon(Icons.admin_panel_settings_sharp),
-                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.green)),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), topRight: Radius.circular(10)))
-                ),
-              )
-            ],
-          )
-        ),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Form(
+              key: myFormKey,
+              child: Column(
+                children: [
+                  const CustomInputField(labelText: 'nombre',hintText: 'nombre(s)', keyboardType1: TextInputType.name),
+                  const SizedBox(height: 30),
+                  const CustomInputField(labelText: 'apellido',hintText: 'apellido(s)', keyboardType1: TextInputType.name),
+                  const SizedBox(height: 30),
+                  const CustomInputField(labelText: 'correo',hintText: 'correo electronico' ,keyboardType1: TextInputType.emailAddress),
+                  const SizedBox(height: 30),
+                  const CustomInputField(labelText: 'contraseña',hintText: 'contraseña', isPassword: true),
+                  const SizedBox(height: 30),
+                  ElevatedButton(
+                        onPressed:(){
+                          FocusScope.of(context).requestFocus(FocusNode());
+                          if (!myFormKey.currentState!.validate()){
+                            print('formulario no valido');
+                          }
+                          print(formValues);
+                        }, 
+                        child:const SizedBox(
+                          width: double.infinity,
+                          child: Center(child:  Text('Guardar',style: TextStyle(color: Colors.white,fontSize: 20),)),
+                        )
+                        ),
+                ]),
+            ),
+            ),
       ),
     );
   }
 }
+
