@@ -9,9 +9,12 @@ class CustomInputField extends StatelessWidget {
   final IconData? suffixIcon;
   final TextInputType? keyboardType1;
   final bool isPassword;
+
+  final String formProperty;
+  final Map<String,String> formValues;
   
   const CustomInputField({
-    super.key, this.hintText, this.helperText, this.labelText, this.icon, this.suffixIcon, this.keyboardType1, this.isPassword=false,
+    super.key, this.hintText, this.helperText, this.labelText, this.icon, this.suffixIcon, this.keyboardType1, this.isPassword=false, required this.formProperty, required this.formValues,
   });
 
   @override
@@ -21,7 +24,9 @@ class CustomInputField extends StatelessWidget {
       keyboardType: keyboardType1,
       obscureText: isPassword,
       textCapitalization: TextCapitalization.words,
-      onChanged: (value) => {},
+      onChanged: (value) => {
+        formValues[formProperty] = value
+      },
       validator: (value) {
         if (value == null) return 'Ete campo es requerido';
         return value.length < 3 ? 'Minimo de 3 letras' : null;

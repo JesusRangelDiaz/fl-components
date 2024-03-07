@@ -29,13 +29,27 @@ class InputScreen extends StatelessWidget {
               key: myFormKey,
               child: Column(
                 children: [
-                  const CustomInputField(labelText: 'nombre',hintText: 'nombre(s)', keyboardType1: TextInputType.name),
+                  const Text('REGISTER USER FORM'),
+                  const SizedBox(height: 20),
+                  CustomInputField(labelText: 'nombre', hintText: 'nombre(s)', keyboardType1: TextInputType.name, formProperty: 'first_name',formValues: formValues),
                   const SizedBox(height: 30),
-                  const CustomInputField(labelText: 'apellido',hintText: 'apellido(s)', keyboardType1: TextInputType.name),
+                  CustomInputField(labelText: 'apellido', hintText: 'apellido(s)', keyboardType1: TextInputType.name, formProperty: 'last_name', formValues: formValues),
                   const SizedBox(height: 30),
-                  const CustomInputField(labelText: 'correo',hintText: 'correo electronico' ,keyboardType1: TextInputType.emailAddress),
+                  CustomInputField(labelText: 'correo', hintText: 'correo electronico' ,keyboardType1: TextInputType.emailAddress, formProperty: 'email', formValues:formValues),
                   const SizedBox(height: 30),
-                  const CustomInputField(labelText: 'contraseña',hintText: 'contraseña', isPassword: true),
+                  CustomInputField(labelText: 'contraseña', hintText: 'contraseña', isPassword: true, formProperty: 'password', formValues: formValues),
+                  const SizedBox(height: 30),
+                  DropdownButtonFormField<String>(
+                    value: 'Admin',
+                    items:const [ 
+                      DropdownMenuItem(value:'Admin',child: Text('Admin')),
+                      DropdownMenuItem(value:'SuperUser',child: Text('admin')),
+                      DropdownMenuItem(value:'Developer',child: Text('Developer')),
+                      DropdownMenuItem(value:'Jr.Developer',child: Text('Jr.Developer'))], 
+                    onChanged: (value){
+                      formValues['role']=value??'admin';
+                    }
+                    ),
                   const SizedBox(height: 30),
                   ElevatedButton(
                         onPressed:(){
